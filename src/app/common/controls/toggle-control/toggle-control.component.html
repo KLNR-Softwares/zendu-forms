@@ -1,0 +1,5 @@
+<ng-container *ngFor="let option of options;let i=index;">
+    <div class="toggle-btn" [class.selected]="value?option[value]:option===selected" (click)="toggleValue(value?option[value]:option)">
+        {{display?option[display]:option}}
+    </div>
+</ng-container>

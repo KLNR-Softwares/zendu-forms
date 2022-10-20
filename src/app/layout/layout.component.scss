@@ -1,0 +1,9 @@
+.layout-content {
+    padding: 32px;
+}
+
+@media screen and (max-width:1280px) {
+    .layout-content {
+        padding: 24px;
+    }
+}

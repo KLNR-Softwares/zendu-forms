@@ -1,0 +1,7 @@
+<select [attr.placeholder]="placeholder" [(ngModel)]="selected" [ngModelOptions]="{standalone: true}"
+    (ngModelChange)="onValueChange()" (focus)="markAsTouched()" (blur)="onValueChange()">
+    <option value="">{{placeholder}}</option>
+    <option *ngFor="let option of options;let i=index;" [value]="value?option[value]:option">
+        {{display?option[display]:option}}
+    </option>
+</select>

@@ -1,0 +1,98 @@
+<h2>Submissions</h2>
+<div class="filter-area">
+    <div class="filter-area-left">
+        <div class="filter-control search-control">
+            <app-search-control placeholder="Search..."></app-search-control>
+        </div>
+        <div class="filter-control">
+            <app-dropdown-control placeholder="Select Form" [options]="formList"></app-dropdown-control>
+        </div>
+        <div class="filter-control">
+            <app-dropdown-control placeholder="Select Status" [options]="statusList" display="label" value="label">
+            </app-dropdown-control>
+        </div>
+        <div class="filter-control">
+            <app-datepicker-control placeholder="DD/MM/YYYY"></app-datepicker-control>
+        </div>
+    </div>
+    <div class="filter-area-right">
+        <div class="filter-control">
+            <app-toggle-control [options]="toggleList" [selected]="toggleSelected" (toggled)="onSelectToggle($event)">
+            </app-toggle-control>
+        </div>
+        <div class="export">
+            <div class="export-btn">
+                <img src="assets/icons/svg/Paper Download.svg" alt="" />
+                <span>Export</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="map-list-container has-map">
+
+    <div class="list-container">
+        <ng-container *ngFor="let record of submissionList">
+            <div class="list-block">
+                <div class="list-content">
+                    <h5>{{record.title}}</h5>
+                    <div class="list-item">
+                        <span>From:</span>
+                        <span>{{record.from}}</span>
+                    </div>
+                    <div class="list-item">
+                        <span>To:</span>
+                        <span>{{record.to}}</span>
+                    </div>
+                    <div class="list-item">
+                        <span>Due Date:</span>
+                        <span class="due-date">{{record.due_date}}</span>
+                    </div>
+                </div>
+                <div class="list-status">
+                    <div class="list-status-button"
+                        [ngClass]="{'red':record.status==='Uncomplete','green':record.status==='Low Risk'}">
+                        <i></i><span>{{record.status}}</span>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+    <div class="map-container">
+        <google-map width="100%" [options]="mapOptions">
+            <ng-container *ngFor="let record of submissionList">
+                <map-marker #marker="mapMarker" [position]="record.position" [options]="markerOptions"
+                    (mapClick)="openInfoWindow(marker, record)">
+                </map-marker>
+
+                <map-info-window>
+                    <div class="info-window" *ngIf="infoWindowContent">
+                        <div class="info-title">{{infoWindowContent.title}}</div>
+                        <div class="info-content">
+                            <div class="list-content">
+                                <div class="list-item">
+                                    <span>From:</span>
+                                    <span>{{infoWindowContent.from}}</span>
+                                </div>
+                                <div class="list-item">
+                                    <span>To:</span>
+                                    <span>{{infoWindowContent.to}}</span>
+                                </div>
+                                <div class="list-item">
+                                    <span>Due Date:</span>
+                                    <span class="due-date">{{infoWindowContent.due_date}}</span>
+                                </div>
+                                <div class="list-status-button"
+                                    [ngClass]="{'red':infoWindowContent.status==='Uncomplete','green':infoWindowContent.status==='Low Risk'}">
+                                    <i></i><span>{{infoWindowContent.status}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </map-info-window>
+            </ng-container>
+        </google-map>
+    </div>
+
+</div>

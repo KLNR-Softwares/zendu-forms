@@ -1,0 +1,116 @@
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 32px;
+    gap: 40px;
+    background: #2188D9;
+
+    .logo {
+        &-text {
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 32px;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.02em;
+            color: #FFFFFF;
+        }
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            li {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 24px 16px;
+                margin-right: 16px;
+
+                &.active {
+                    background: #1773BB;
+                }
+
+                &:hover {
+                    background: #1773bbb0;
+                }
+
+                &:last-child {
+                    margin-right: 0px;
+                }
+
+                img {}
+
+                span {
+                    margin-left: 10px;
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 24px;
+                    color: #FFFFFF;
+                }
+            }
+
+            &.right-menu {
+                margin-left: 100px;
+
+                li {
+                    padding: 24px 12px;
+                    margin-right: 0px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1400px) {
+    header {
+        nav {
+            ul {
+                &.right-menu {
+                    margin-left: 0px;
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width:1280px) {
+    header {
+        padding: 0px 24px;
+        gap: 24px;
+
+        .logo {
+            &-text {
+                font-size: 26px;
+            }
+        }
+
+        nav {
+            ul {
+
+                li {
+                    padding: 16px 8px;
+                    margin-right: 0px;
+                }
+
+                &.right-menu {
+                    li {
+                        padding: 16px 8px;
+                    }
+                }
+            }
+        }
+    }
+
+}

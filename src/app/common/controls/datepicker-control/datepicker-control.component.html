@@ -1,0 +1,4 @@
+<img src="assets/icons/svg/calendar.svg" alt="" />
+<input type="text" [attr.placeholder]="placeholder" [(ngModel)]="value" [ngModelOptions]="{standalone: true}"
+    (ngModelChange)="onValueChange()" (focus)="markAsTouched()" (blur)="onValueChange()" (click)="markAsTouched()"
+    [dpDayPicker]="datePickerConfig" theme="dp-material" />

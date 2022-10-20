@@ -1,0 +1,3 @@
+<img src="assets/icons/svg/search.svg" alt="" />
+<input type="text" [attr.placeholder]="placeholder" [(ngModel)]="value" [ngModelOptions]="{standalone: true}"
+    (ngModelChange)="onValueChange()" (focus)="markAsTouched()" (blur)="onValueChange()" />
